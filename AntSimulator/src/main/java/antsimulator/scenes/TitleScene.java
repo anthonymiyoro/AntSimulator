@@ -6,8 +6,11 @@
 package antsimulator.scenes;
 
 import antsimulator.framework.Scene;
+import antsimulator.framework.event.GameEvent;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Time;
+import org.jsfml.window.event.Event;
+import org.jsfml.window.event.KeyEvent;
 
 /**
  * A scene representing the start menu.
@@ -22,17 +25,40 @@ public class TitleScene extends Scene {
 
     @Override
     public void update(Time deltaT) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        super.update(deltaT);
     }
 
     @Override
     public void processInput() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        //JSFML event -> GameEvent
+        for(Event event : window.pollEvents()) 
+        {
 
-    @Override
-    public void render() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            switch(event.type)
+            {
+
+                case KEY_PRESSED:
+                {
+
+                    KeyEvent keyEvent = event.asKeyEvent();
+
+                    switch(keyEvent.key)
+                    {
+
+                        case ESCAPE:
+                        {
+
+                            this.events.add(new GameEvent(GameEvent.Type.QUIT_ATTEMPT));
+                            break;
+
+                        }//Escape
+
+                    }//switch(keyEvent.key)
+                    break;
+
+                }//KEY_PRESSED
+            }//switch
+        }//for
     }
     
 }

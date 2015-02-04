@@ -5,7 +5,11 @@
  */
 package antsimulator.framework;
 
+import antsimulator.framework.event.GameEvent;
+import antsimulator.framework.event.SceneChangeEvent;
+import antsimulator.scenes.TitleScene;
 import java.util.ArrayList;
+import org.jsfml.graphics.Drawable;
 import org.jsfml.graphics.FloatRect;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.graphics.View;
@@ -53,6 +57,17 @@ public abstract class Scene {
 	 * Window to draw on.
 	 */
 	protected RenderWindow window;
+        
+        
+        /**
+	 * List of events.
+	 */
+	protected ArrayList<GameEvent> events = new ArrayList<GameEvent>();
+        
+        /**
+         * List of drawable objects.
+         */
+        protected ArrayList<Drawable> objects = new ArrayList<Drawable>();
 	
 	
 	
@@ -108,8 +123,49 @@ public abstract class Scene {
 	
 	/**
 	 * Updates the game logic.
+         * 
+         * To avoid copy-paste code, the abstract Scene class handles common events such as closing the game.
+         * For now we'll opt for a lazy switch solution. Hopefully it can be replaced with something more elegant later on.
 	 */
-	public abstract void update(Time deltaT);
+	public void update(Time deltaT)
+        {
+            	for(GameEvent event : this.events)
+		{
+			
+			switch(event.type)
+			{
+			
+				case QUIT_ATTEMPT:
+				{
+					
+					this.exit();
+					break;
+					
+				}//QUIT_ATTEMPT
+				
+				case SCENE_CHANGE:
+				{
+
+					SceneChangeEvent e = event.asSceneChangeEvent();
+					switch(e.scene)
+					{
+					
+						case TITLE_SCENE:
+						{
+							this.toScene(new TitleScene(this.window));
+							break;
+						}//TITLE_SCENE
+						
+						
+					}//switch(e.scene)
+					
+					break;
+				}//SCENE_CHANGE
+				
+			}//switch(event.type)
+
+		}//for
+        }
 	
 	/**
 	 * Handles user input.
@@ -121,7 +177,13 @@ public abstract class Scene {
 	/**
 	 * Renders the scene.
 	 */
-	public abstract void render();
+	public void render()
+        {
+            for(Drawable o : objects)
+            {
+                window.draw(o);
+            }
+        }
 	
 	/**
 	 * Changes scene from current scene to the given scene.

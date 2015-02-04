@@ -20,28 +20,82 @@ import org.jsfml.window.WindowStyle;
  */
 public class Main {
     
+    	/* *********************************************************************************************************************
+	 *                                                   DATA MEMBERS
+	 * **********************************************************************************************************************/
+	
+	
+	//***********************Static variables:*************************************
+	
+	
+	/**
+         * The window the game is drawn on.
+         */
+	private static RenderWindow window;
+        
+        /**
+         * The current scene.
+         */
+        private static Scene scene;
+        
+        /**
+         * The clock used to keep track of time.
+         */
+        private static Clock deltaClock;
+        
+        /**
+         * Time since last update.
+         */
+        private static Time deltaT;
+			
+			
+			
+			
+	//************************Class variables:*************************************
+	
+	
+	
+	//No class variables
+
+	
+	
+	
+	//************************Getters**********************************
+		
+		
+	
+	//No getters
+	
+	
+	
+	
+	//************************Setters**********************************
+	
+	
+	
+	//No setters.
+			
+			
+			
+	//************************Other methods**********************************
+			
+			
+	
+		
+	
+    
+    
     /**
     * Main game loop
     * @param args Command line arguments that are currently not used!
     */
     public static void main(String[] args)
     {
-           //Create the window
-           RenderWindow window = new RenderWindow();
-           window.create(VideoMode.getFullscreenModes()[0], "AntSimulator", WindowStyle.FULLSCREEN);
-
-           //Create the scene
-           Scene scene = new TitleScene(window);
-
-           //Create the clock
-           Clock deltaClock = new Clock();
-           Time deltaT = Time.ZERO;
+           initializeGame();
 
            //Main game loop
            while(window.isOpen()) 
            {
-               //Fills the window with black.
-               window.clear(Color.BLACK);
                //Add the time passed to the total time pool.
                deltaT = deltaClock.restart();
 
@@ -52,6 +106,30 @@ public class Main {
                window.display();
                scene = scene.getCurrScene();
            }
+    }
+
+    /**
+     * Initializes the game.
+     */
+    private static void initializeGame() {
+        //Creates the window
+        window = createWindow();
+        
+        //Creates the scene
+        scene = new TitleScene(window);
+        
+        //Creates the clock
+        deltaClock = new Clock();
+        deltaT = Time.ZERO;
+    }
+
+    /**
+     * Creates the window for the game.
+     */
+    private static RenderWindow createWindow() {
+        RenderWindow window = new RenderWindow();
+        window.create(VideoMode.getFullscreenModes()[0], "AntSimulator", WindowStyle.FULLSCREEN);
+        return window;
     }
 }
 

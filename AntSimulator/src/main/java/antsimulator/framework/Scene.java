@@ -9,6 +9,7 @@ import antsimulator.framework.event.GameEvent;
 import antsimulator.framework.event.SceneChangeEvent;
 import antsimulator.scenes.TitleScene;
 import java.util.ArrayList;
+import org.jsfml.graphics.Color;
 import org.jsfml.graphics.Drawable;
 import org.jsfml.graphics.FloatRect;
 import org.jsfml.graphics.RenderWindow;
@@ -179,6 +180,10 @@ public abstract class Scene {
 	 */
 	public void render()
         {
+            //Fills the window with black.
+            window.clear(Color.BLACK);
+            
+            //Draws the objects.
             for(Drawable o : objects)
             {
                 window.draw(o);

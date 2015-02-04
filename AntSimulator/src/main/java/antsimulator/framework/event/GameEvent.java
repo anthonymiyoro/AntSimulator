@@ -35,12 +35,6 @@ public class GameEvent {
            SCENE_CHANGE,
 
            /**
-            * User clicked a menu button.
-            * We need to know which button!
-            */
-           MENU_BUTTON_PRESS,
-
-           /**
             * User wishes to zoom a view!
             * We need to know which which view and by how much!
             */

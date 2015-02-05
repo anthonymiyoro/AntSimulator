@@ -18,3 +18,9 @@ Seuraavaksi teen nyt luomilleni luokille testit, minkä jälkeen voin ryhtyä tu
 
 ##5.2
 * 1h 45min: Tein testit kaikelle paitsi Main luokalle - mikään muu kuin sen main() funktio ei näy luokan ulkopuolelle, ja main() sisältää peliloopin. Ongelmia mutaatiotestauksen kanssa - Pit ei löydä testejä. Netbeans <3
+* 15min: Pit ongelma ratkaistu. Testaus ei toistaiseksi kovin kattavaa, mutta sitä ehtii paikkailemaan myöhemminkin. 
+* 1h: Aloitin muurahaispesän tekemisen. Osaa ladata tekstuurin, pitää kirjaa tuhansien muurahaisten sijainnista, sekä piirtää muurahaiset. Muurahaisten luomista ja liikkumista en ole vielä implementoinut, eikä pesää vielä ole missään scenessä. 
+
+Peli on toistaiseksi edelleen vain musta ruutu, mutta tekniikkaa sisällöntuottamiseen alkaa vähitellen löytymään. Muurahaisten satunnaisen liikkumisen toteuttamiseen ei pitäisi mennä kovinkaan kauaa, ja yksinkertaisen aloita peli -menun tekemiseen ei aikaa menisi juuri lainkaan. Itse muurahaisalgoritmin toteuttamisessa toki menee hetki, mutta kaiken kaikkiaan projekti on lähtenyt kohtuullisen hyvin liikkeelle alun pysähdyksen jälkeen. Yksi aktiivinen päivä lisää, ja pelissä pitäisi olla aloita peli-painike ja peli scene jossa "idioottimuurahaisia", jotka liikkuvat satunnaisesti. 
+
+Työtä toki vielä on, ennen kuin saan aikataulun kiinni, mutta kaiken kaikkiaan olen optimistinen.

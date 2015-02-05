@@ -63,12 +63,11 @@ public class SceneChangeEvent extends GameEvent{
 	
 	/**
 	 * Constructs a new SceneChangeEvent.
-	 * @param type Type of the event. This should be SCENE_CHANGE.
 	 * @param scene Scene we are switching to.
 	 */
-	public SceneChangeEvent(Type type, Scene scene)
+	public SceneChangeEvent(Scene scene)
 	{
-		super(type);
+		super(GameEvent.Type.SCENE_CHANGE);
 		this.scene = scene;
 	}
 	

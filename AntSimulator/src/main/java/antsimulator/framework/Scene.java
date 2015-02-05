@@ -20,7 +20,7 @@ import org.jsfml.system.Time;
  * A single scene such as the main game or the title screen.
  * @author Ville-Matti Tanninen
  */
-public abstract class Scene {
+public abstract class Scene implements EventListener{
 	/* *********************************************************************************************************************
 	 *                                                   DATA MEMBERS
 	 * **********************************************************************************************************************/
@@ -69,10 +69,10 @@ public abstract class Scene {
          * List of drawable objects.
          */
         protected ArrayList<Drawable> objects = new ArrayList<Drawable>();
-	
-	
-	
+        
 
+	
+	
 	/* **********************************************************************************************************************
 	 *                                                        METHODS
 	 * **********************************************************************************************************************/
@@ -90,9 +90,9 @@ public abstract class Scene {
 	{
 		currScene = this;
 		this.window = window;
-		
-		//If no views have been created, creates the first view.
-		this.createView();
+                
+                //If there is no view, creates one.
+                this.createFirstView();
 	}
 
 	
@@ -206,17 +206,26 @@ public abstract class Scene {
 	 {
 		 this.window.close();
 	 }
-	 
+         
+         
 	 /**
 	  * Creates the first view, if it hasn't been created yet.
 	  */
-	 private void createView()
+	 private void createFirstView()
 	 {
-		 if (views.size() == 0)
+		 if (views.isEmpty())
 			{
 				views.add(new View(viewSize));
 				window.setView(views.get(0));
 			}
 	 }
+
+        /**
+         * Notifies the scene of an event.
+         */
+        @Override
+        public void notify(GameEvent e) {
+            events.add(e);
+        }
     
 }

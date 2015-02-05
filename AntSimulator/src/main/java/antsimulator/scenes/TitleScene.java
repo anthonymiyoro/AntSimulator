@@ -7,6 +7,7 @@ package antsimulator.scenes;
 
 import antsimulator.framework.Scene;
 import antsimulator.framework.event.GameEvent;
+import antsimulator.gameObjects.AntHive;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Time;
 import org.jsfml.window.event.Event;

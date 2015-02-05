@@ -11,6 +11,8 @@ import antsimulator.framework.event.SceneChangeEvent;
 import antsimulator.scenes.TitleScene;
 import org.jsfml.graphics.RenderWindow;
 import org.jsfml.system.Time;
+import org.jsfml.window.VideoMode;
+import org.jsfml.window.WindowStyle;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,6 +27,7 @@ import static org.junit.Assert.*;
 public class SceneTest {
     Scene scene1;
     Scene scene2;
+    RenderWindow window;
     public SceneTest() {
         
     }
@@ -40,7 +43,7 @@ public class SceneTest {
     
     @Before
     public void setUp() {
-        RenderWindow window = new RenderWindow();
+        window = new RenderWindow();
         scene1 = new TitleScene(window);
         scene2 = new TitleScene(window);
     }
@@ -54,6 +57,11 @@ public class SceneTest {
     //
     // @Test
     // public void hello() {}
+    
+    private void openWindow()
+    {
+        window.create(VideoMode.getFullscreenModes()[0], "AntSimulatorTestWindow", WindowStyle.CLOSE);
+    }
     
     @Test
     public void sceneChangesCorrectly()
@@ -70,4 +78,24 @@ public class SceneTest {
         scene1.update(Time.ZERO);
         assertNotSame(scene1, scene1.getCurrScene());
     }
+    
+    @Test
+    public void windowClosesCorrectly()
+    {
+        openWindow();
+        assertTrue(window.isOpen());
+        scene1.exit();
+        assertTrue(!window.isOpen());
+    }
+    
+    @Test
+    public void windowClosesViaUpdate()
+    {
+        openWindow();
+        assertTrue(window.isOpen());
+        scene1.notify(new GameEvent(GameEvent.Type.QUIT_ATTEMPT));
+        scene1.update(Time.ZERO);
+        assertTrue(!window.isOpen());
+    }
+    
 }

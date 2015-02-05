@@ -15,3 +15,6 @@ Päätin hyödyntää erään aikaisemman peliprojektini oppeja, ja rakentaa pro
 *Valikko tarkoittaa tässä siis erillistä valikko näkymää, ei pelin aikana tapahtuvaa pause menua.
 
 Seuraavaksi teen nyt luomilleni luokille testit, minkä jälkeen voin ryhtyä tuottamaan pelille sisältöä, eli tässä tapauksessa siis muurahaisia.
+
+##5.2
+* 1h: Tein testit kaikelle paitsi Main luokalle - mikään muu kuin sen main() funktio ei näy Mainin ulkopuolelle, ja main() on sisältää peliloopin. Ongelmia mutaatiotestauksen kanssa - Pit ei löydä testejä. Netbeans <3

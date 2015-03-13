@@ -3,4 +3,4 @@ Simulates ants. Lots of them. Assignment for University of Helsinki course "Aine
 
 Uses the wonderful free graphics library JSFML, available here: http://jsfml.org/
 
-Shelved, for now.
+Shelved.
